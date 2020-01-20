@@ -1,0 +1,3 @@
+include ':CommonLib'
+include ':app'
+rootProject.name = "WustCampus"

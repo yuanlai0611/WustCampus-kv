@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WustCampus</string>
+    <string name="account">账号</string>
+    <string name="password">密码</string>
+    <string name="login">登录</string>
+    <string name="loginSuccess">登录成功</string>
+    <string name="loginFail">登录失败</string>
+    <string name="loginCancel">登录取消</string>
+</resources>
