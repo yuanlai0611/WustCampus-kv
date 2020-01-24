@@ -7,15 +7,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.commonlib.isNetworkAvailable
 import com.example.wustcampus.R
+import com.example.wustcampus.datasource.SharePreferenceUtils
 import com.example.wustcampus.repository.UserRepository
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class UserModel(private val app: Application): AndroidViewModel(app) {
-    val isLoginSuccess = MutableLiveData<Boolean>()
+    val isJumpToMainFragment = MutableLiveData<Boolean>()
     val loginToast = MutableLiveData<String>()
-    
+
+    fun checkIsLogin() {
+        isJumpToMainFragment.value = UserRepository.isLogin(app)
+    }
 
     fun login(account: String, password: String) {
         if (!isNetworkAvailable(app)) {
@@ -30,17 +34,19 @@ class UserModel(private val app: Application): AndroidViewModel(app) {
                 loginRsp?.takeIf {
                     it.code == 1
                 }?.let {
-                    isLoginSuccess.value = true
+                    isJumpToMainFragment.value = true
+                    UserRepository.setIsLogin(app, true)
+                    UserRepository.saveUserInfo(app, account, password)
                     loginToast.value = app.getString(R.string.loginSuccess)
                     return@launch
                 } 
-                isLoginSuccess.value = false
+                isJumpToMainFragment.value = false
                 loginToast.value = app.getString(R.string.loginFail)
             } catch (e: CancellationException) {
-                isLoginSuccess.value = false
+                isJumpToMainFragment.value = false
                 loginToast.value = app.getString(R.string.loginCancel)
             } catch (e: Exception) {
-                isLoginSuccess.value = false
+                isJumpToMainFragment.value = false
                 loginToast.value = app.getString(R.string.loginFail)
             }
         }
