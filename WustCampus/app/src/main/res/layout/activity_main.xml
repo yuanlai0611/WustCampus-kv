@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fl_container"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-    
+    tools:context=".ui.activity.MainActivity">
+
     <fragment
-        android:id="@+id/fragment_main"
-        app:navGraph="@navigation/login_navigation"
-        app:defaultNavHost="true"
+        android:id="@+id/hostFragment"
+        app:navGraph="@navigation/navigation_main"
+        app:defaultNavHost="false"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-</FrameLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:background="@color/colorWhite"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemIconTint="@drawable/selector_nav_item_color"
+        app:itemTextColor="@drawable/selector_nav_item_color"
+        app:menu="@menu/menu_main"/>
+
+</LinearLayout>

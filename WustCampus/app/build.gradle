@@ -56,6 +56,8 @@ dependencies {
     // alternatively - just ViewModel
     implementation "android.arch.lifecycle:viewmodel:$lifecycle_version" // use -ktx for Kotlin
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-rc03"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-rc03"
+
     implementation "android.arch.lifecycle:livedata:$lifecycle_version"
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-rc03'
 
@@ -67,4 +69,7 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
 
     implementation "com.facebook.stetho:stetho:$facebook_stetho_version"
+
+    implementation "androidx.paging:paging-runtime:$page_version"
+
 }

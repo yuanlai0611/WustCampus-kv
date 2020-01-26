@@ -15,6 +15,13 @@ interface IUserRepository {
         scope: CoroutineScope
     ): LoginRsp?
 
+    fun saveUserInfo(
+        ctx: Context,
+        studentId: String,
+        studentName: String,
+        semester: String
+    )
+
     fun setIsLogin(
         ctx: Context,
         isLogin: Boolean

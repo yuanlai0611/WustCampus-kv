@@ -10,15 +10,19 @@ import com.example.wustcampus.R
 import com.example.wustcampus.datasource.SharePreferenceUtils
 import com.example.wustcampus.repository.UserRepository
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.lang.Exception
 
-class UserModel(private val app: Application): AndroidViewModel(app) {
+class UserModel(val app: Application): AndroidViewModel(app) {
     val isJumpToMainFragment = MutableLiveData<Boolean>()
     val loginToast = MutableLiveData<String>()
 
-    fun checkIsLogin() {
-        isJumpToMainFragment.value = UserRepository.isLogin(app)
+    fun checkIsLogin(): Boolean {
+        val isLogin = UserRepository.isLogin(app)
+        isJumpToMainFragment.value = isLogin
+        return isLogin
     }
 
     fun login(account: String, password: String) {

@@ -29,7 +29,7 @@ interface CourseDao {
                 "AND ${CourseSchema.Cols.SEMESTER} = :semester " +
                 "ORDER BY ${CourseSchema.Cols.WEEKDAY}, ${CourseSchema.Cols.TIME} ASC"
     )
-    fun query(studentId: Long, weekday: Int, semester: String): LiveData<List<CourseBean>>
+    fun query(studentId: String, weekday: Int, semester: String): LiveData<List<CourseBean>>
 
     @Query(
         "SELECT * FROM ${CourseSchema.TABLE_NAME} " +
@@ -39,7 +39,7 @@ interface CourseDao {
                 "AND ${CourseSchema.Cols.WEEKDAY} = :weekday " +
                 "AND ${CourseSchema.Cols.TIME} = :time"
     )
-    fun query(studentId: Long, week: Int, weekday: Int, time: Int, semester: String): CourseBean
+    fun query(studentId: String, week: Int, weekday: Int, time: Int, semester: String): CourseBean
 
     /**
      * 获取 {学号ID、学期} 对应课程的数量
@@ -49,5 +49,14 @@ interface CourseDao {
                 "WHERE ${CourseSchema.Cols.STUDENT_ID} = :studentId " +
                 "AND ${CourseSchema.Cols.SEMESTER} = :semester"
     )
-    fun query(studentId: Long, semester: String): Int
+    fun query(studentId: String, semester: String): Int
+
+    /**
+     *
+     */
+    @Query("SELECT ${CourseSchema.Cols.COLOR} FROM ${CourseSchema.TABLE_NAME} " +
+            "WHERE ${CourseSchema.Cols.STUDENT_ID} = :studentId AND ${CourseSchema.Cols.SEMESTER} = :semester " +
+            "ORDER BY id DESC " +
+            "LIMIT 1")
+    fun queryLastColorIndex(studentId: String, semester: String): Int?
 }

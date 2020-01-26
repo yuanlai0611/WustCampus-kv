@@ -8,9 +8,7 @@ import com.example.wustcampus.datasource.db.schema.UserSchema
 @Entity(tableName = UserSchema.TABLE_NAME)
 data class UserBean(
     @ColumnInfo(name = UserSchema.Cols.SEMESTER) val semester: String,
-    @ColumnInfo(name = UserSchema.Cols.STUDENT_NAME) val studentName: String
-) {
+    @ColumnInfo(name = UserSchema.Cols.STUDENT_NAME) val studentName: String,
     @PrimaryKey(autoGenerate = false)
-    @ColumnInfo(name = UserSchema.Cols.STUDENT_ID)
-    var studentId: Long = 0
-}
+    @ColumnInfo(name = UserSchema.Cols.STUDENT_ID) val studentId: String
+)

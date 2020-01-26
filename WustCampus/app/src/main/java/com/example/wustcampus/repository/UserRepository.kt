@@ -2,6 +2,8 @@ package com.example.wustcampus.repository
 
 import android.content.Context
 import com.example.wustcampus.datasource.SharePreferenceUtils
+import com.example.wustcampus.datasource.db.AppDatabase
+import com.example.wustcampus.datasource.db.databean.UserBean
 import com.example.wustcampus.request.AppService
 import com.example.wustcampus.request.bean.LoginRsp
 import kotlinx.coroutines.CancellationException
@@ -9,12 +11,33 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-object UserRepository: IUserRepository{
+object UserRepository : IUserRepository {
     @Throws(CancellationException::class)
-    override suspend fun login(account: String, password: String, scope: CoroutineScope): LoginRsp? {
+    override suspend fun login(
+        account: String,
+        password: String,
+        scope: CoroutineScope
+    ): LoginRsp? {
         return withContext(scope.coroutineContext + Dispatchers.Default) {
             AppService.login(account, password)
         }
+    }
+
+    override fun saveUserInfo(
+        ctx: Context,
+        studentId: String,
+        studentName: String,
+        semester: String
+    ) {
+        val userBean = UserBean(
+            studentId = studentId,
+            studentName = studentName,
+            semester = semester
+        )
+        AppDatabase
+            .getInstance(ctx)
+            .userDao()
+            .insertUserBean(userBean)
     }
 
     override fun setIsLogin(ctx: Context, isLogin: Boolean) {

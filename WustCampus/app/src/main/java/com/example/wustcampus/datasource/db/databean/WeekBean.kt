@@ -20,7 +20,7 @@ import com.example.wustcampus.datasource.db.schema.WeekSchema
     ]
 )
 data class WeekBean(
-    @ColumnInfo(name = WeekSchema.Cols.STUDENT_ID) val studentId: Long,
+    @ColumnInfo(name = WeekSchema.Cols.STUDENT_ID) val studentId: String,
     @ColumnInfo(name = WeekSchema.Cols.WEEK) val week: Int,
     @ColumnInfo(name = WeekSchema.Cols.MONDAY) val monday: Int,
     @ColumnInfo(name = WeekSchema.Cols.TUESDAY) val tuesday: Int,
@@ -32,6 +32,6 @@ data class WeekBean(
     @ColumnInfo(name = WeekSchema.Cols.SEMESTER) val semester: String
 ) {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
+    @ColumnInfo(name = "id")
     var id: Long = 0
 }

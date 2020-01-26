@@ -10,7 +10,7 @@ import kotlinx.coroutines.CoroutineScope
 interface ICourseRepository {
     fun addCourse(
         ctx: Context,
-        studentId: Long,
+        studentId: String,
         className: String,
         teacher: String,
         classRoom: String,
@@ -26,7 +26,7 @@ interface ICourseRepository {
 
     fun deleteCourse(
         ctx: Context,
-        studentId: Long,
+        studentId: String,
         startWeek: Int,
         endWeek: Int,
         weekday: Int,
@@ -39,14 +39,14 @@ interface ICourseRepository {
 
     fun queryCourseByWeekday(
         ctx: Context,
-        studentId: Long,
+        studentId: String,
         weekday: Int,
         semester: String
     ): LiveData<List<CourseBean>>
 
     fun queryCourse(
         ctx: Context,
-        studentId: Long,
+        studentId: String,
         semester: String,
         week: Int,
         weekday: Int,
@@ -55,7 +55,7 @@ interface ICourseRepository {
 
     fun isExist(
         ctx: Context,
-        studentId: Long,
+        studentId: String,
         semester: String
     ): Boolean
 
@@ -65,4 +65,10 @@ interface ICourseRepository {
         semester: String,
         scope: CoroutineScope
     ): ComRsp<CourseRsp>?
+
+    fun queryLastColorIndex(
+        ctx: Context,
+        studentId: String,
+        semester: String
+    ): Int?
 }

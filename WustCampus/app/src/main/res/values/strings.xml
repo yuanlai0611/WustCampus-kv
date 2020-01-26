@@ -6,4 +6,7 @@
     <string name="loginSuccess">登录成功</string>
     <string name="loginFail">登录失败</string>
     <string name="loginCancel">登录取消</string>
+    <string name="page_home">主页</string>
+    <string name="page_course">课表</string>
+    <string name="page_mine">个人</string>
 </resources>

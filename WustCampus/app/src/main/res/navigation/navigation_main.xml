@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/courseFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.wustcampus.ui.fragment.main.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/courseFragment"
+        android:name="com.example.wustcampus.ui.fragment.main.CourseFragment"
+        android:label="CourseFragment"
+        tools:layout="@layout/fragment_course" />
+    <fragment
+        android:id="@+id/mineFragment"
+        android:name="com.example.wustcampus.ui.fragment.main.MineFragment"
+        android:label="MineFragment"
+        tools:layout="@layout/fragment_mine" />
+
+</navigation>

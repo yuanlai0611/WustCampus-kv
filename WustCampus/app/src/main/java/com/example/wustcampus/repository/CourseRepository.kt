@@ -13,7 +13,7 @@ import kotlinx.coroutines.*
 object CourseRepository : ICourseRepository {
     override fun addCourse(
         ctx: Context,
-        studentId: Long,
+        studentId: String,
         className: String,
         teacher: String,
         classRoom: String,
@@ -49,7 +49,7 @@ object CourseRepository : ICourseRepository {
 
     override fun deleteCourse(
         ctx: Context,
-        studentId: Long,
+        studentId: String,
         startWeek: Int,
         endWeek: Int,
         weekday: Int,
@@ -82,7 +82,7 @@ object CourseRepository : ICourseRepository {
 
     override fun queryCourseByWeekday(
         ctx: Context,
-        studentId: Long,
+        studentId: String,
         weekday: Int,
         semester: String
     ): LiveData<List<CourseBean>> {
@@ -94,7 +94,7 @@ object CourseRepository : ICourseRepository {
 
     override fun queryCourse(
         ctx: Context,
-        studentId: Long,
+        studentId: String,
         semester: String,
         week: Int,
         weekday: Int,
@@ -106,7 +106,7 @@ object CourseRepository : ICourseRepository {
             .query(studentId, week, weekday, time, semester)
     }
 
-    override fun isExist(ctx: Context, studentId: Long, semester: String): Boolean {
+    override fun isExist(ctx: Context, studentId: String, semester: String): Boolean {
         return AppDatabase.getInstance(ctx).courseDao().query(studentId, semester) > 0
     }
 
@@ -118,7 +118,19 @@ object CourseRepository : ICourseRepository {
         scope: CoroutineScope
     ): ComRsp<CourseRsp>? {
         return withContext(scope.coroutineContext + Dispatchers.Default) {
-            CourseService.fetchCourse(studentId, password, semester)
+            CourseService
+                .fetchCourse(studentId, password, semester)
         }
+    }
+
+    override fun queryLastColorIndex(
+        ctx: Context,
+        studentId: String,
+        semester: String
+    ): Int? {
+        return AppDatabase
+            .getInstance(ctx)
+            .courseDao()
+            .queryLastColorIndex(studentId, semester)
     }
 }

@@ -3,4 +3,36 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <!--课程的颜色-->
+    <color name="colorClass1">#f9ff5c5c</color>
+    <color name="colorClass2">#eeffc122</color>
+    <color name="colorClass3">#f97bcf55</color>
+    <color name="colorClass4">#f960ba9b</color>
+    <color name="colorClass5">#f97360ff</color>
+    <color name="colorClass6">#f9fda95f</color>
+    <color name="colorClass7">#f97ed17d</color>
+    <color name="colorClass8">#f9de5189</color>
+    <color name="colorClass9">#f9249bfc</color>
+    <color name="colorClass10">#f96b7fc6</color>
+    <color name="colorNoClass">#bbcfcd</color>
+
+    <!--课程的阴影颜色-->
+    <color name="colorClassShadow1">#2dff4e4e</color>
+    <color name="colorClassShadow2">#2dffc228</color>
+    <color name="colorClassShadow3">#2d67cf39</color>
+    <color name="colorClassShadow4">#2d53ba96</color>
+    <color name="colorClassShadow5">#2d6752ff</color>
+    <color name="colorClassShadow6">#2dfda909</color>
+    <color name="colorClassShadow7">#2d7ed10a</color>
+    <color name="colorClassShadow8">#2dde5189</color>
+    <color name="colorClassShadow9">#2d1294ff</color>
+    <color name="colorClassShadow10">#2d576ec1</color>
+    <color name="colorNoClassShadow">#5abbcfcd</color>
+
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorWhite">#ffffff</color>
+
+    <color name="colorApp">#81c784</color>
+    <color name="colorNormal">#adb4be</color>
 </resources>
